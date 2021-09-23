@@ -918,8 +918,8 @@ public class EditorSVNTools : EditorWindow
         }
         if (hasContent || hasAdd || hasMiss)
         {
-            Debug.Log(sbMod.ToString());
             EditorCommandTools.ProcessCommand("cmd.exe", sbMod.ToString());
+            Debug.Log(sbMod.ToString());
             RefreshFileInfos();
         }
         else
