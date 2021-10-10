@@ -21,7 +21,7 @@ public sealed class GoapAgent : IUpdate
     private GoapPlanner planner;
 
     private object goapAgentData;
-    public int Priority => DefinePriority.NORMAL;
+    public int Priority => 100;
 
     public void On_Update(float elapseSeconds, float realElapseSeconds)
     {

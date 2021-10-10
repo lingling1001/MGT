@@ -1,0 +1,4 @@
+﻿0|D:\Project\Learn\GHMGT\Document\trunk\Xml
+1|D:\Project\Learn\GHMGT\Client\trunk\MGT2\Assets\_Res\Config
+2|1,Assets/__TMP*Assets/_Art*Assets/_Res,1,
+3|D:\Project\Learn\GHMGT\Client\trunk\MGT2\Assets\__TMP\SaveData

@@ -9,41 +9,41 @@ public static class UIHelper
 {
 
 
-    public static void SetRawImage(RawImage image, string headIcon)
-    {
-        if (image == null || string.IsNullOrEmpty(headIcon))
-        {
-            return;
-        }
-        Texture2D obj = ResLoadHelper.LoadAsset<Texture2D>(headIcon);
-        image.texture = obj;
-    }
-    public static void SetAtlasImage(AtlasImage image, string headIcon)
-    {
-        SetAtlasImage(image, headIcon, false);
-    }
-    public static void SetAtlasImage(AtlasImage image, string headIcon, bool nativeSize)
-    {
-        if (image == null || string.IsNullOrEmpty(headIcon))
-        {
-            return;
-        }
-        image.spriteName = headIcon;
-        if (nativeSize)
-        {
-            image.SetNativeSize();
-        }
-    }
-    public static Vector3 WorldPointToUILocalPoint(Vector3 point)
-    {
-        RectTransform canvas = UIManager.Instance.UICanvas.rectTransform();
-        Camera uiCamera = UIManager.Instance.UICamera;
-        Camera mainCamera = GameManager<CameraManager>.Instance.GetMgr().MainCamera; ;
-        Vector3 screenPoint = mainCamera.WorldToScreenPoint(point);
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, screenPoint, uiCamera, out localPoint);
-        return localPoint;
-    }
+    //public static void SetRawImage(RawImage image, string headIcon)
+    //{
+    //    if (image == null || string.IsNullOrEmpty(headIcon))
+    //    {
+    //        return;
+    //    }
+    //    Texture2D obj = ResLoadHelper.LoadAsset<Texture2D>(headIcon);
+    //    image.texture = obj;
+    //}
+    //public static void SetAtlasImage(AtlasImage image, string headIcon)
+    //{
+    //    SetAtlasImage(image, headIcon, false);
+    //}
+    //public static void SetAtlasImage(AtlasImage image, string headIcon, bool nativeSize)
+    //{
+    //    if (image == null || string.IsNullOrEmpty(headIcon))
+    //    {
+    //        return;
+    //    }
+    //    image.spriteName = headIcon;
+    //    if (nativeSize)
+    //    {
+    //        image.SetNativeSize();
+    //    }
+    //}
+    //public static Vector3 WorldPointToUILocalPoint(Vector3 point)
+    //{
+    //    RectTransform canvas = UIManager.Instance.UICanvas.rectTransform();
+    //    Camera uiCamera = UIManager.Instance.UICamera;
+    //    Camera mainCamera = GameManager<CameraManager>.Instance.GetMgr().MainCamera; ;
+    //    Vector3 screenPoint = mainCamera.WorldToScreenPoint(point);
+    //    Vector2 localPoint;
+    //    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, screenPoint, uiCamera, out localPoint);
+    //    return localPoint;
+    //}
 
 
 
@@ -81,9 +81,9 @@ public static class UIHelper
             texName.text = name;
         }
     }
+
+
     private static Dictionary<EnumCountStrType, string> _mapStrCount;
-
-
     /// <summary>
     /// 拼接数量 。
     /// </summary>

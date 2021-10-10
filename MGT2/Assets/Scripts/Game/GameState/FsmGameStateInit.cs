@@ -6,15 +6,12 @@ public class FsmGameStateInit : FsmBase
     {
 
     }
-    public override void OnLoad()
+    public override void OnInit()
     {
-        ES3.Init();
-        //初始化log
+        base.OnInit();
         GameFrameworkLog.SetLogHelper(new DefaultLogHelper());
-        NotificationManager.Instance.GetInstance();
-        GameManager<ManagerBase>.Instance.GetInstance();
-
-        UIManager.Instance.GetInstance(); 
+        NotificationManager.InstanceInitial();
+        UIManager.InstanceInitial();
 
     }
     public override void OnEnter()
@@ -24,19 +21,9 @@ public class FsmGameStateInit : FsmBase
 
     public override void OnRelease()
     {
-        GameManager<ManagerBase>.InstanceRelease();
-
-        TaskAsynManager.InstanceRelease();
-
         UIManager.InstanceRelease();
-
         NotificationManager.InstanceRelease();
-
-
-        TransparentNode.ReleaseInstance();
-
         base.OnRelease();
     }
-
 
 }

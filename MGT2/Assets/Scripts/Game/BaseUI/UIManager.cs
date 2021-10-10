@@ -2,9 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using System.Reflection;
-using com.ootii.Messages;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -16,19 +13,9 @@ public class UIManager : Singleton<UIManager>
     public List<BaseUI> ListOpens { get { return _listOpens; } }
     private Dictionary<string, BaseUI> _mapTempOpening = new Dictionary<string, BaseUI>();
 
-    public static void QOpenUI<T>(params object[] param) where T : BaseUI
-    {
-        Instance.OpenUI<T>(param);
-    }
-    public static void QCloseUI<T>() where T : BaseUI
-    {
-        Instance.CloseUI<T>();
-    }
 
-    public void OpenUI<T>(params object[] param) where T : BaseUI
+    public void OpenUI<T>(string strPath, params object[] param) where T : BaseUI
     {
-        string strPath = AssetsName.GetUIPath<T>();
-
         BaseUI openUI = GetOpenUI(strPath);
         if (openUI != null)//已经打开了界面
         {
@@ -61,14 +48,6 @@ public class UIManager : Singleton<UIManager>
 
     }
 
-    public bool UIIsOpen<T>() where T : BaseUI
-    {
-        return GetOpenUI<T>() != null;
-    }
-    public BaseUI GetOpenUI<T>() where T : BaseUI
-    {
-        return GetOpenUI(AssetsName.GetUIPath<T>());
-    }
     public BaseUI GetOpenUI(string strPath)
     {
         return _listOpens.Find(item => item.UIPath == strPath);
@@ -82,10 +61,7 @@ public class UIManager : Singleton<UIManager>
         }
         return null;
     }
-    public void CloseUI<T>() where T : BaseUI
-    {
-        CloseUI(AssetsName.GetUIPath<T>());
-    }
+
     public void CloseUI(string strType)
     {
         BaseUI ui = GetOpenUI(strType);
@@ -110,7 +86,7 @@ public class UIManager : Singleton<UIManager>
         List<BaseUI> list = new List<BaseUI>();
         for (int cnt = 0; cnt < ListOpens.Count; cnt++)
         {
-            if (ListOpens[cnt].UIKind == EnumUIKind.Normal)
+            if (type == EnumUIKind.None || ListOpens[cnt].UIKind == type)
             {
                 list.Add(ListOpens[cnt]);
             }
@@ -121,6 +97,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+    
     private CanvasScaler _cavScaler;
     public CanvasScaler CavScaler { get { return _cavScaler; } }
 
@@ -157,7 +134,6 @@ public class UIManager : Singleton<UIManager>
     {
         if (TransUIRoot != null)
         {
-            ResLoadHelper.DestroyObject(TransUIRoot.gameObject);
             _transUIRoot = null;
         }
     }

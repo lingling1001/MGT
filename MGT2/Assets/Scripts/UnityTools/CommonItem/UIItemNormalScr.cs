@@ -137,7 +137,7 @@ public class UIItemNormalScr : MonoBehaviour
                 break;
             case EItemMemberType.RawImage:
                 RawImage image = mono as RawImage;
-                UIHelper.SetRawImage(image, info);
+                //UIHelper.SetRawImage(image, info);
                 break;
             default:
                 break;

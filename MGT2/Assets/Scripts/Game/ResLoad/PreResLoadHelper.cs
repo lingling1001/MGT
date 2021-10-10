@@ -48,7 +48,7 @@ public class PreResLoadHelper : MonoSingleton<PreResLoadHelper>
     {
         if (objs.Count == 0)
         {
-            MessageDispatcher.SendMessage(NotificationName.RESOURCES_LOAD_FINISH);
+            NotificationManager.SendMessage(NotificationName.EventLoadFinish);
             return;
         }
         _preLoads.Clear();
@@ -122,7 +122,7 @@ public class PreResLoadHelper : MonoSingleton<PreResLoadHelper>
                     Log.Error("-----------------华丽的分割线-----------------");
                 }
                 Log.Info(" 加载 资源 完成 资源数量 ： " + _mapPreLoadRes.Count);
-                MessageDispatcher.SendMessage(NotificationName.RESOURCES_LOAD_FINISH);
+                MessageDispatcher.SendMessage(NotificationName.EventLoadFinish);
             }
         }
 

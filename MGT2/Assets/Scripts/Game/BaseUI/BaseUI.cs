@@ -21,6 +21,15 @@ public abstract class BaseUI
     {
 
     }
+
+    public virtual void OnOpen()
+    {
+
+    }
+    public virtual void OnClose()
+    {
+
+    }   
     public virtual void OnRelease()
     {
 
@@ -29,6 +38,7 @@ public abstract class BaseUI
 
 public enum EnumUIKind
 {
+    None,
     /// <summary>
     /// 常驻
     /// </summary>

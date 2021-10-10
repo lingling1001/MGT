@@ -6,7 +6,7 @@ public class GameStateManager : Singleton<GameStateManager>
 {
     public FsmManagerGame FsmGameState { get { return _fsmGameState; } }
     private FsmManagerGame _fsmGameState;
-    public void OnInit()
+    protected override void  OnInit()
     {
         _fsmGameState = new FsmManagerGame();
         _fsmGameState.OnInit();
@@ -27,7 +27,7 @@ public class GameStateManager : Singleton<GameStateManager>
         }
         FsmGameState.ChangeState(strState);
     }
-    public void OnRelease()
+    protected override void OnRelease()
     {
         if (_fsmGameState != null)
         {

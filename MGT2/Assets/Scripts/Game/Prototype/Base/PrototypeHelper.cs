@@ -8,15 +8,8 @@ public class PrototypeHelper
 {
     public static void LoadAllData()
     {
-        //角色
-        LoadData<PrototypeRole>(GetConfig("Role"));
-        LoadData<PrototypeAbility>(GetConfig("Ability"));
         //地图信息
         LoadData<PrototypeMap>(GetConfig("Map"));
-
-        LoadData<PrototypeHeadIcon>(GetConfig("HeadIcon"));
-
-        LoadData<PrototypeText>(GetConfig("Text"));
 
 
         ////主界面

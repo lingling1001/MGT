@@ -522,7 +522,7 @@ public class EditorSVNTools : EditorWindow
     }
     private void InitialConfit()
     {
-        string strConfit = EditorConfitTools.GetSavePath(EnumLoadSettingPath.SVNConfigTools);
+        string strConfit = EditorConfigTools.GetSavePath(EnumLoadSettingPath.SVNConfigTools);
         string[] strs = Utility.Xml.ParseString<string>(strConfit, Utility.Xml.SplitComma);
         if (strs == null)
         {
@@ -555,8 +555,8 @@ public class EditorSVNTools : EditorWindow
         strContent = strContent + "," + (true ? "1" : "0");
         strContent = strContent + "," + _strFilterInfoInclude;
 
-        EditorConfitTools.SaveConfigByType(EnumLoadSettingPath.SVNConfigTools, strContent);
-        EditorConfitTools.SaveConfig();
+        EditorConfigTools.SaveConfigByType(EnumLoadSettingPath.SVNConfigTools, strContent);
+        EditorConfigTools.SaveConfig();
 
     }
     /// <summary>
@@ -1031,7 +1031,7 @@ public class EditorSVNTools : EditorWindow
 
     public static string GetSavePath()
     {
-        string strPath = EditorConfitTools.GetSavePath(EnumLoadSettingPath.SVNTempSave);
+        string strPath = EditorConfigTools.GetSavePath(EnumLoadSettingPath.SVNTempSave);
         if (string.IsNullOrEmpty(strPath))
         {
             // return "";

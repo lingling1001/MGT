@@ -1,34 +1,34 @@
 ﻿using com.ootii.Messages;
 using MFrameWork;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class FsmGameStatePreLoad : FsmBase
 {
     public FsmGameStatePreLoad(FsmManager fasManager, string strName) : base(fasManager, strName)
     {
     }
-    public override void OnLoad()
+
+    public override void OnInit()
     {
-        MessageDispatcher.AddListener(NotificationName.RESOURCES_LOAD_FINISH, EventLoadFinish);
-        PreResLoadHelper.Instance.OnInitPreLoad();
-        base.OnLoad();
+        NotificationManager.AddListener(NotificationName.EventLoadFinish, EventLoadFinish);
+        base.OnInit();
+    }
+    public override void OnRelease()
+    {
+        NotificationManager.RemoveListener(NotificationName.EventLoadFinish, EventLoadFinish);
+        base.OnRelease();
     }
 
     private void EventLoadFinish(IMessage rMessage)
     {
         PrototypeHelper.LoadAllData();
-        ChangeState(FsmManagerGame.GAME_STATE_MAIN);
 
+        ChangeState(FsmManagerGame.GAME_STATE_START);
     }
 
-    public override void OnRelease()
+    public override void OnEnter()
     {
-        MessageDispatcher.RemoveListener(NotificationName.RESOURCES_LOAD_FINISH, EventLoadFinish);
-        base.OnRelease();
+        PreResLoadHelper.Instance.OnInitPreLoad();
     }
-
 
 }

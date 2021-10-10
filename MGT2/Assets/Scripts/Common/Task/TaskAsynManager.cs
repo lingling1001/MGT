@@ -2,71 +2,72 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using MFrameWork;
-
-public class TaskAsynManager : Singleton<TaskAsynManager>
+namespace MFrameWork
 {
-    private Dictionary<int, ITaskAsyncable> mapTaskAsync = new Dictionary<int, ITaskAsyncable>();
-
-    public void AdditionTask(ITaskAsyncable task)
+    public class TaskAsynManager : Singleton<TaskAsynManager>
     {
-        mapTaskAsync.Add(task.TaskId, task);
-        task.Start();
-    }
+        private Dictionary<int, ITaskAsyncable> mapTaskAsync = new Dictionary<int, ITaskAsyncable>();
 
-
-    public bool ContainTask(int id)
-    {
-        return mapTaskAsync.ContainsKey(id);
-    }
-
-    public ITaskAsyncable GetTaskAsyn(int id)
-    {
-        if (ContainTask(id))
+        public void AdditionTask(ITaskAsyncable task)
         {
-            return mapTaskAsync[id];
+            mapTaskAsync.Add(task.TaskId, task);
+            task.Start();
         }
-        return null;
-    }
 
-    public T GetTaskAsyn<T>(int id) where T : class, ITaskAsyncable
-    {
-        if (ContainTask(id))
+
+        public bool ContainTask(int id)
         {
-            return mapTaskAsync[id] as T;
+            return mapTaskAsync.ContainsKey(id);
         }
-        return null;
-    }
 
-    public void FinishTask(int id)
-    {
-        if (ContainTask(id))
+        public ITaskAsyncable GetTaskAsyn(int id)
         {
-            ITaskAsyncable thread = mapTaskAsync[id];
-            thread.Stop();
-            mapTaskAsync.Remove(id);
+            if (ContainTask(id))
+            {
+                return mapTaskAsync[id];
+            }
+            return null;
         }
-    }
 
-    public int GetFreeTaskId()
-    {
-        int taskId = 1;
-        while (mapTaskAsync.ContainsKey(taskId))
+        public T GetTaskAsyn<T>(int id) where T : class, ITaskAsyncable
         {
-            taskId++;
+            if (ContainTask(id))
+            {
+                return mapTaskAsync[id] as T;
+            }
+            return null;
         }
-        return taskId;
-    }
 
-
-    protected override void OnRelease()
-    {
-        List<int> list = new List<int>(mapTaskAsync.Keys);
-        for (int cnt = 0; cnt < list.Count; cnt++)
+        public void FinishTask(int id)
         {
-            FinishTask(list[cnt]);
+            if (ContainTask(id))
+            {
+                ITaskAsyncable thread = mapTaskAsync[id];
+                thread.Stop();
+                mapTaskAsync.Remove(id);
+            }
         }
+
+        public int GetFreeTaskId()
+        {
+            int taskId = 1;
+            while (mapTaskAsync.ContainsKey(taskId))
+            {
+                taskId++;
+            }
+            return taskId;
+        }
+
+
+        protected override void OnRelease()
+        {
+            List<int> list = new List<int>(mapTaskAsync.Keys);
+            for (int cnt = 0; cnt < list.Count; cnt++)
+            {
+                FinishTask(list[cnt]);
+            }
+        }
+
+
     }
-
-
 }

@@ -15,7 +15,7 @@ public class ResLoadManager : MonoSingleton<ResLoadManager>, IUpdate
     private int _loadMaxCount = 2;
     private Dictionary<string, Object> _mapCacheAssets = new Dictionary<string, Object>();
 
-    public int Priority => DefinePriority.RESLOAD;
+    public int Priority => 50;
 
     private void Awake()
     {

@@ -27,17 +27,17 @@ public class EditorMenu
         ConfigLoadExtension.ClearSaveChangeData();
     }
 
-    /// <summary>
-    /// 配置设置界面
-    /// </summary>
-    [MenuItem("MGTools/TS/TS001")]
-    public static void OpenTS001()
-    {
-        TestInspector myWindow =
-           (TestInspector)EditorWindow.GetWindow(typeof(TestInspector), false, "EditorTestFun", true);//创建窗口
+    ///// <summary>
+    ///// 配置设置界面
+    ///// </summary>
+    //[MenuItem("MGTools/TS/TS001")]
+    //public static void OpenTS001()
+    //{
+    //    TestInspector myWindow =
+    //       (TestInspector)EditorWindow.GetWindow(typeof(TestInspector), false, "EditorTestFun", true);//创建窗口
 
-        myWindow.Show();
-    }
+    //    myWindow.Show();
+    //}
 
     //[MenuItem("MGTools/HotKey/CopyItemPath &q")]
     //private static void CopyItemPath()

@@ -1,38 +1,12 @@
-﻿using UnityEngine;
-public class AssemblyPosition : AssemblyGetViewBase
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AssemblyPosition : AssemblyBase
 {
     public Vector3 Position;
-    public void SetPosition(Vector3 pos)
+    public void SetValue(Vector3 value)
     {
-        Position = pos;
-        if (!ViewObjIsNull())
-        {
-            RefreshViewPosition();
-        }
-        Owner.NotifyObserver(EnumAssemblyOperate.Position, this);
+        Position = value;
     }
-
-    public override void ViewLoadFinish()
-    {
-        base.ViewLoadFinish();
-        RefreshViewPosition();
-    }
-
-    public void RefreshViewPosition()
-    {
-        assemblyView.Trans.localPosition = Position;
-    }
-
-
-    //public VInt3 NewPosition;
-
-    //public void SetPosition(VInt3 pos)
-    //{
-    //    NewPosition = pos;
-    //    if (!ViewObjIsNull())
-    //    {
-    //        RefreshViewPosition();
-    //    }
-    //    Owner.NotifyObserver(EnumAssemblyOperate.Position, this);
-    //}
 }

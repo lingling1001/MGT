@@ -6,19 +6,5 @@ public class FsmGameStateMain : FsmBase
     {
 
     }
-    public override void OnInit()
-    {
-        base.OnInit();
-    }
-    public override void OnEnter()
-    {
-        UIManager.QOpenUI<UIEnterGame>();
-        
-    }
-
-    public override void OnLeave()
-    {
-        UIManager.QCloseUI<UIEnterGame>();
-        
-    }
+  
 }

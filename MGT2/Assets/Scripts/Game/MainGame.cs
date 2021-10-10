@@ -20,7 +20,7 @@ public class MainGame : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        GameStateManager.Instance.OnInit();
+        GameStateManager.InstanceInitial();
     }
     private void Update()
     {
@@ -29,7 +29,6 @@ public class MainGame : MonoBehaviour
     private void FixedUpdate()
     {
         RegisterInterfaceManager.FixUpdate();
-
     }
     private void LateUpdate()
     {
@@ -37,7 +36,7 @@ public class MainGame : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameStateManager.Instance.OnRelease();
+        GameStateManager.InstanceRelease();
     }
 
 }
