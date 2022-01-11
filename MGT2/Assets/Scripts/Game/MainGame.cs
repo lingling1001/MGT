@@ -1,8 +1,11 @@
-﻿using MFrameWork;
+using MFrameWork;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+
+
 
 public class MainGame : MonoBehaviour
 {
@@ -22,6 +25,7 @@ public class MainGame : MonoBehaviour
         Application.targetFrameRate = 60;
         GameStateManager.InstanceInitial();
     }
+   
     private void Update()
     {
         RegisterInterfaceManager.Update(Time.deltaTime, Time.unscaledDeltaTime);
